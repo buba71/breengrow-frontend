@@ -1,0 +1,22 @@
+language: node_js
+sudo: false
+
+node_js:
+  - 10.7
+
+branches:
+  only:
+    - master
+    - develop
+
+cache:
+  directories:
+    - "node_modules"
+
+install:
+  - npm install
+  # - npm run generate
+
+script:
+  - npm run lint
+  - npm run test
