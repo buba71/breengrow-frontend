@@ -18,9 +18,7 @@
   </v-container>
 </template>
 <script>
-import Vue from 'vue';
-
-export default Vue.extend({
+export default {
   data() {
     return {
       userInfo: {
@@ -45,5 +43,5 @@ export default Vue.extend({
       }
     }
   }
-});
+};
 </script>
