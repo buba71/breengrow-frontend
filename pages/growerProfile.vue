@@ -4,11 +4,10 @@
   </v-container>
 </template>
 <script>
-import Vue from 'vue';
-export default Vue.extend({
+export default {
   middleware: 'authenticated',
   meta: {
     auth: { role: 'ROLE_GROWER' }
   }
-});
+};
 </script>

@@ -1,4 +1,4 @@
-export default function({ store, route, redirect }) {
+export default function({ store, req, route, redirect }) {
   // Get meta properties from route. Example: authorizationRoles = ['GROWER_ROLE'].
   const authorizationRoles = route.meta.map((meta) => {
     if (meta.auth && meta.auth.role !== 'undefined') return meta.auth.role;

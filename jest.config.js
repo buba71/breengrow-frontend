@@ -1,4 +1,7 @@
 module.exports = {
+  verbose: true,
+  testMatch: ['<rootDir>/test/unit/**/*'],
+  setupFilesAfterEnv: ['./setupTests.js'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',
@@ -12,6 +15,7 @@ module.exports = {
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/components/**/*.vue',
+    // '<rootDir>/middleware/**/*.js',
     '<rootDir>/pages/**/*.vue'
   ]
 };

@@ -88,3 +88,10 @@ sw.*
 
 # Vim swap files
 *.swp
+
+# Jest test coverage
+coverage
+
+# Ava test coverage
+.nyc_output
+coverage

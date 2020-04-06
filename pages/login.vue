@@ -14,7 +14,6 @@
         </v-btn>
       </div>
     </v-form>
-    {{ loggedIn }}
   </v-container>
 </template>
 <script>
@@ -26,11 +25,6 @@ export default {
         password: ''
       }
     };
-  },
-  computed: {
-    loggedIn() {
-      return this.$auth.loggedIn;
-    }
   },
   methods: {
     async login() {

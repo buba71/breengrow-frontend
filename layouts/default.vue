@@ -37,9 +37,6 @@ import Vue from 'vue';
 export default Vue.extend({
   data() {
     return {};
-  },
-  created() {
-    this.$vuetify.theme.dark = false;
   }
 });
 </script>
