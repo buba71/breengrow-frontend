@@ -1,7 +1,7 @@
 module.exports = {
   verbose: true,
   testMatch: ['<rootDir>/test/unit/**/*'],
-  setupFilesAfterEnv: ['./setupTests.js'],
+  // setupFilesAfterEnv: ['./setupTests.js'],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
     '^~/(.*)$': '<rootDir>/$1',

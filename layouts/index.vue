@@ -1,0 +1,38 @@
+<template>
+  <div>
+    <header>
+      <nav-bar></nav-bar>
+      <div class="img-header"></div>
+      <div class="card">
+        <div class="card__frame">
+          <div class="card__title">title</div>
+          <input type="search" /><button class="btn btn__secondary">
+            rechercher
+          </button>
+        </div>
+      </div>
+    </header>
+    <nuxt />
+  </div>
+</template>
+
+<script>
+import Vue from 'vue';
+import navbar from '../components/navbar.vue';
+
+export default Vue.extend({
+  components: { 'nav-bar': navbar },
+  data() {
+    return {};
+  }
+});
+</script>
+
+<style lang="scss" scoped>
+@import '~/assets/css/main.scss';
+.card {
+  top: -15rem;
+  background-color: $color-primary;
+  background-size: cover;
+}
+</style>

@@ -1,5 +1,3 @@
-import colors from 'vuetify/es5/util/colors';
-
 export default {
   mode: 'universal',
   /*
@@ -17,7 +15,13 @@ export default {
         content: process.env.npm_package_description || ''
       }
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
+    link: [
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      {
+        rel: 'stylesheet',
+        href: 'https://pro.fontawesome.com/releases/v5.10.0/css/all.css'
+      }
+    ]
   },
   /*
    ** Customize the progress-bar color
@@ -26,7 +30,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: [],
+  css: ['@assets/css/main.scss'],
   /*
    ** Plugins to load before mounting the App
    */
@@ -36,8 +40,7 @@ export default {
    */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/vuetify'
+    '@nuxtjs/eslint-module'
   ],
   /*
    ** Nuxt.js modules
@@ -53,7 +56,7 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {
-    baseURL: 'http://192.168.99.100:8000/',
+    baseURL: 'http://127.0.0.1:8000/',
     credentials: true
   },
   /**
@@ -73,27 +76,6 @@ export default {
           login: { url: 'api/login', method: 'post', propertyName: 'token' },
           user: { url: 'api/user', method: 'get', propertyName: false },
           logout: false
-        }
-      }
-    }
-  },
-  /*
-   ** vuetify module configuration
-   ** https://github.com/nuxt-community/vuetify-module
-   */
-  vuetify: {
-    customVariables: ['~/assets/variables.scss'],
-    theme: {
-      dark: false,
-      themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3
         }
       }
     }
