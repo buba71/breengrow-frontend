@@ -1,2 +1,1 @@
-// Init Vuetity on tests.
-import Vue from 'vue';
+// File jest tests setup .
