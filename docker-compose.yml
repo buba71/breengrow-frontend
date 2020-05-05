@@ -1,3 +1,7 @@
+################################################################################################
+########## <<< Doesn't work on this project cause binding with noee-sass build >>>> ################
+##########                                                                  ####################
+
 version: '3'
 services:
   frontend_app:
@@ -12,6 +16,3 @@ services:
     environment:
       NUXT_HOST: 0.0.0.0
       NUXT_PORT: 5000
-
-
-

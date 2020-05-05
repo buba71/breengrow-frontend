@@ -1,0 +1,10 @@
+header {
+    height: 550px;
+}
+.img-header {    
+    height: 500px;
+    border-top: 2px solid $color-primary;
+    background-image: url('~assets/images/header.jpg');
+    background-size: cover;
+}
+

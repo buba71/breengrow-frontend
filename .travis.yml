@@ -19,4 +19,5 @@ install:
 
 script:
   - npm run lint
-  - npm run test
+  - npm run unitest
+  - npm run e2etest

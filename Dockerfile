@@ -6,6 +6,7 @@ WORKDIR /usr/src/breenGrow-frontend
 
 RUN cd ../
 COPY package*.json ./
+
 RUN npm install
 
 # Run server
