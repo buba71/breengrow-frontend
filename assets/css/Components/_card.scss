@@ -2,17 +2,16 @@
     position: relative;    
     display: flex;
     flex-direction: column;
-    width: 300px;
-    height: 400px;
+    width: auto;
+    height: 100%;
     margin: auto;  
     padding: 1rem;    
     box-shadow: 1px 1px 2px grey;    
     &__frame{
-        width: 100%;
+        width: auto;
         height: 100%;
         padding: 1rem;    
-        color: #fff;
-        box-sizing: border-box;    
+        color: #fff;  
         border: 1px solid #fff;
     }
     &__title {
@@ -20,4 +19,6 @@
         text-align: center;
         font-size: 1.5rem;
     }
+    @include card-colors($colors);
+    
 }

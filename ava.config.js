@@ -1,5 +1,5 @@
 export default {
-  files: ['test/e2e/**/*'],
+  files: ['./test/e2e/**/*'],
   babel: true,
   verbose: true
 };

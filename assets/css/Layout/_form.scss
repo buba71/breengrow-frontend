@@ -12,9 +12,8 @@ input {
     &:focus{
         background-color: #fff;    
         border: 0px solid; 
-        border: 2px solid $color-primary; 
-        border-radius: 5px 5px 5px 5px;  
-        
+        border: 2px solid $primary-color; 
+        border-radius: 5px 5px 5px 5px;          
     }    
 }
 
@@ -25,7 +24,7 @@ input {
     }
     .icon {
         padding: .5rem; 
-        color: $color-secondary; 
+        color: $secondary-color; 
         min-width: 50px; 
     
     }

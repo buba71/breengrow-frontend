@@ -1,0 +1,22 @@
+.container {
+    width: 80%;
+    margin: auto;
+    &--fluid {
+        width: 100%;
+    }
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-column-gap: 10px;
+
+}
+
+.one {    
+    grid-column-end: span 12;;
+}
+
+.two {
+    grid-column-end: span 6;
+}

@@ -6,7 +6,7 @@
       <div class="card">
         <div class="card__frame">
           <div class="card__title">title</div>
-          <input type="search" /><button class="btn btn__secondary">
+          <input type="search" /><button class="btn btn--secondary">
             rechercher
           </button>
         </div>
@@ -32,7 +32,6 @@ export default Vue.extend({
 @import '~/assets/css/main.scss';
 .card {
   top: -15rem;
-  background-color: $color-primary;
-  background-size: cover;
+  background-color: $primary-color;
 }
 </style>

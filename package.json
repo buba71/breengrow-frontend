@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@ava/babel": "^1.0.1",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
     "@babel/register": "^7.9.0",
     "@nuxtjs/eslint-config": "^2.0.0",
     "@nuxtjs/eslint-module": "^1.0.0",
@@ -36,7 +37,7 @@
     "jest": "^24.1.0",
     "jsdoc": "^3.6.3",
     "jsdom": "^16.2.2",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "prettier": "^1.19.1",
     "vue-jest": "^4.0.0-0"
   }

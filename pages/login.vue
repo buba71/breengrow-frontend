@@ -1,44 +1,36 @@
 <template>
   <div>
-    <h1>Login</h1>
-    <div class="card">
-      <div class="card__title">Connexion</div>
-      <form class="form-group" @submit.prevent="login">
-        <div class="input-block">
-          <i class="fas fa-user icon"></i>
-          <input
-            ref="email"
-            v-model="userInfo.email"
-            label="email"
-            type="text"
-            class="form-control"
-            @keydown.down="onKeyDown"
-          />
+    <main>
+      <h1>Login</h1>
+      <div class="card card--primary">
+        <div class="card__title">Connexion</div>
+        <form class="form-group" @submit.prevent="login">
           <div class="input-block">
-            <i class="fas fa-lock icon"></i>
+            <i class="fas fa-user icon"></i>
             <input
-              ref="password"
-              v-model="userInfo.password"
-              label="password"
-              type="password"
-              class="form-control input-field"
-              @keydown.up="onKeyUp"
-              @keydown.down="onKeyDown"
+              v-model="userInfo.email"
+              label="email"
+              type="text"
+              class="form-control"
             />
+            <div class="input-block">
+              <i class="fas fa-lock icon"></i>
+              <input
+                v-model="userInfo.password"
+                label="password"
+                type="password"
+                class="form-control input-field"
+              />
+            </div>
           </div>
-        </div>
-        <div>
-          <button
-            ref="button"
-            type="submit"
-            class="btn btn__primary"
-            @keydown.up="onKeyUp"
-          >
-            Login
-          </button>
-        </div>
-      </form>
-    </div>
+          <div>
+            <button type="submit" class="btn btn--secondary">
+              Login
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
   </div>
 </template>
 <script>
@@ -51,9 +43,6 @@ export default {
       }
     };
   },
-  mounted() {
-    this.$refs.email.focus();
-  },
   methods: {
     async login() {
       try {
@@ -61,23 +50,9 @@ export default {
           data: this.userInfo
         });
       } catch (error) {
-        console.log(error.response.data);
+        // console.log(error.response.data);
         this.$router.push('/error');
       }
-    },
-    onKeyDown(event) {
-      const type = event.target.attributes.getNamedItem('type');
-
-      type.nodeValue === 'password'
-        ? this.$refs.button.focus()
-        : this.$refs.password.focus();
-    },
-    onKeyUp(event) {
-      const type = event.target.attributes.getNamedItem('type');
-
-      type.nodeValue === 'password'
-        ? this.$refs.email.focus()
-        : this.$refs.password.focus();
     }
   }
 };

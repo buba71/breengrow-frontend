@@ -6,6 +6,9 @@
     {{ loggedUserState }}
     {{ isLogged }}
     <ul class="nav__links">
+      <li class="nav__item">
+        <nuxt-link to="register">Ouvrir une ruche</nuxt-link>
+      </li>
       <!-- NAVGUARD -->
       <li class="nav__item">
         <nuxt-link :to="route">{{ linkToDisplay }}</nuxt-link>

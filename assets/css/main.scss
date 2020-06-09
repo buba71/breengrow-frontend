@@ -1,12 +1,15 @@
-@import 'Base/variables';
+@import 'Abstracts/variables';
+@import 'Abstracts/mixins';
 
 
 @import 'Base/base';
+@import 'Base/grid';
 @import 'Base/index_header';
+
+@import 'Layout/form';
 
 @import 'Components/button';
 @import 'Components/card';
-@import 'Components/form';
 @import 'Components/navbar';
 
 

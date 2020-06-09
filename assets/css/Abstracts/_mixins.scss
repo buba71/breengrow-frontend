@@ -1,0 +1,19 @@
+
+@mixin card-colors ($colors) {
+    @each $key, $color in $colors {
+        &--#{$key} {
+            background-color: map-get($colors, $key);
+        }
+    }
+
+}
+
+
+@mixin btn-colors ($colors) {
+    @each $key, $color in $colors {
+        &--#{$key} {
+            background-color: map-get($colors, $key);
+        }
+    }
+
+}

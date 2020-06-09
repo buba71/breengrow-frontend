@@ -1,8 +1,9 @@
 <template>
   <div>
-    <h1>Grower profile</h1>
+    <h1>Grower Profile</h1>
   </div>
 </template>
+
 <script>
 export default {
   middleware: 'authenticated',

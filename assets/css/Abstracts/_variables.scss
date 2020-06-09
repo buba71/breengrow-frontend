@@ -1,0 +1,17 @@
+$danger-color: #cc0000;
+$info-color: #0099cc;
+$primary-color: #ff7e35;
+$secondary-color: #09c733;
+$success-color: #007e33;
+$warning-color: #ff8800;
+
+
+
+$colors: (    
+    danger: $danger-color,
+    info: $info-color,
+    primary: $primary-color,
+    secondary: $secondary-color,   
+    success: $success-color,
+    warning: $warning-color 
+)
