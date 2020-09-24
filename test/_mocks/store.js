@@ -21,3 +21,16 @@ export function StoreLoggedAsGrowerMock(getters, store) {
 
   return new Vuex.Store({ getters });
 }
+
+export function StoreLoggedAsConsumerMock(getters, store) {
+  getters = {
+    loggedUserState() {
+      return { roles: ['ROLE_CONSUMER'] };
+    },
+    isLogged() {
+      return true;
+    }
+  };
+
+  return new Vuex.Store({ getters });
+}

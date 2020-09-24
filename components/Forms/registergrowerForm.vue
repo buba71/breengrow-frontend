@@ -2,15 +2,14 @@
   <form class="card" @submit.prevent="submit">
     <h2>Votre société</h2>
     <Form-Factory :fields="companyForm" @input="updateCompanyData" />
-    {{ dataCompany }}
     <h2>Vous</h2>
     <Form-Factory :fields="growerForm" @input="updateGrowerData" />
-    {{ dataGrower }}
     <button type="submit" class="btn btn--primary">Valider</button>
   </form>
 </template>
 <script>
 import FormFactory from '../FormFactory/FormFactory.vue';
+import GrowerConverter from '../Forms/FormConverters/GrowerConverter.js';
 import {
   growerFormType,
   growerCompanyAdressType
@@ -19,14 +18,16 @@ import {
 export default {
   name: 'RegisterGrowerForm',
   components: { 'Form-Factory': FormFactory },
+
   data: () => {
     return {
       companyForm: [],
       growerForm: [],
-      dataCompany: {},
-      dataGrower: {}
+      companyData: {},
+      growerData: {}
     };
   },
+
   /**
    * Building grower form.
    */
@@ -36,22 +37,17 @@ export default {
   },
   methods: {
     updateCompanyData(payload) {
-      this.dataCompany = payload;
+      this.companyData = payload;
     },
     updateGrowerData(payload) {
-      this.dataGrower = payload;
+      this.growerData = payload;
     },
-    async submit() {
-      // const formData = { ...this.dataCompany, ...this.dataGrower };
-      const formData = this.dataGrower;
-      console.log('FormData', formData);
-      try {
-        const response = await this.$axios.$post('api/grower/create', formData);
-        console.log(response);
-        return response;
-      } catch (error) {
-        console.log(error.response.data);
-      }
+    submit() {
+      const growerDto = GrowerConverter.convertFormDataToDto(
+        this.growerData,
+        this.companyData
+      );
+      this.$emit('submit-grower', growerDto);
     }
   }
 };

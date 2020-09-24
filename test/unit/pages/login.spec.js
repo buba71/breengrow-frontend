@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Login from '../../../pages/login.vue';
+import Login from '../../../pages/security/login.vue';
 
 const authMock = {
   loginWith: jest.fn(() => Promise.resolve())

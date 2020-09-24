@@ -1,6 +1,6 @@
 import FormBuilder from '../../FormFactory/classes/FormBuilder.js';
 
-export function growerFormType() {
+export function consumerFormType() {
   const form = new FormBuilder();
   form.addInput('text', 'firstName', ['two']);
   form.addInput('text', 'lastName', ['two']);
@@ -10,12 +10,12 @@ export function growerFormType() {
   return form.getForm();
 }
 
-export function growerCompanyAdressType() {
+export function consumerAddressFormType() {
   const form = new FormBuilder();
-  form.addInput('text', 'name', ['two']);
-  form.addInput('text', 'siret_number', ['two']);
+  form.addInput('text', 'firstName', ['two']);
+  form.addInput('text', 'lastName', ['two']);
   form.addInput('text', 'street', ['one']);
-  form.addInput('text', 'city', ['two']);
-  form.addInput('text', 'zip_code', ['two']);
+  form.addInput('text', 'zipCode', ['one']);
+  form.addInput('text', 'city', ['one']);
   return form.getForm();
 }

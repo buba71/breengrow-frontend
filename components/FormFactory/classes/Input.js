@@ -1,11 +1,16 @@
 export default class Input {
-  #className;
+  #className; // css class
   #component;
   #label;
   #type;
   #name;
   #placeholder;
 
+  /**
+   *
+   * @param {*} className
+   * Add a class css to input form.
+   */
   setClassName(className) {
     this.className = className;
   }

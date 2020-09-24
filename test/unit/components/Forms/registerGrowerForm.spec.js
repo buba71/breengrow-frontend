@@ -1,31 +1,17 @@
-import { shallowMount } from '@vue/test-utils';
+import { mount } from '@vue/test-utils';
 import RegisterGrowerForm from '../../../../components/Forms/registergrowerForm.vue';
 
 describe('Grower Form', () => {
-  it('should send data grower on submit form', async () => {
-    const fakeFormData = {
-      firstname: 'David',
-      lastname: 'De Lima'
-    };
+  it('should display siret_number name input', () => {
+    const wrapper = mount(RegisterGrowerForm);
 
-    const mockAxios = {
-      $post: jest.fn(() => Promise.resolve(fakeFormData))
-    };
+    expect(wrapper.find('[name=siret_number]').exists()).toBeTruthy();
+  });
 
-    const wrapper = shallowMount(RegisterGrowerForm);
+  it('should display ten inputs', () => {
+    const wrapper = mount(RegisterGrowerForm);
+    const inputs = wrapper.findAll('input');
 
-    wrapper.setData({ dataGrower: fakeFormData });
-    wrapper.vm.$axios = mockAxios;
-
-    // Call submit function on submit form.
-    const response = await wrapper.vm.submit();
-    console.log(response);
-
-    expect(response).toBe(fakeFormData);
-    expect(mockAxios.$post).toHaveBeenCalledTimes(1);
-    expect(mockAxios.$post).toHaveBeenCalledWith(
-      'api/grower/create',
-      fakeFormData
-    );
+    expect(inputs.length).toBe(10);
   });
 });
