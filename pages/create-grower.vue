@@ -1,0 +1,28 @@
+<template>
+  <div class="container">
+    <h1>Create Grower</h1>
+    <Grower-Form @submit-grower="register" />
+  </div>
+</template>
+
+<script>
+import RegisterGrowerForm from '../components/Forms/registerGrowerForm.vue';
+export default {
+  components: { 'Grower-Form': RegisterGrowerForm },
+  methods: {
+    async register(growerDto) {
+      try {
+        // this.$axios.setToken(false, ['post']);
+        const response = await this.$axios.$post(
+          'api/grower/create',
+          growerDto
+        );
+        // console.log(response);
+        return response;
+      } catch (error) {
+        console.log(error.response.data);
+      }
+    }
+  }
+};
+</script>

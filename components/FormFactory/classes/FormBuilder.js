@@ -11,6 +11,7 @@ export default class FormBuilder {
    *
    * @param {*} type
    * @param {*} name
+   * @param {*} options
    */
   addInput(type, name, options = []) {
     const input = new Input();
@@ -36,6 +37,9 @@ export default class FormBuilder {
     FormBuilder.setOptions(input, options);
   }
 
+  /**
+   * @return {array}
+   */
   getForm() {
     return this.form;
   }
@@ -45,6 +49,7 @@ export default class FormBuilder {
    * @param {*} input
    * @param {*} options
    * @returns new Input
+   * Add a css class attribut to input form.
    */
   static setOptions(input, options) {
     input.setClassName(options[0]);

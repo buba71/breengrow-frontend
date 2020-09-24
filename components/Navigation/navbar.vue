@@ -7,7 +7,7 @@
     {{ isLogged }}
     <ul class="nav__links">
       <li class="nav__item">
-        <nuxt-link to="register">Ouvrir une ruche</nuxt-link>
+        <nuxt-link to="/create-grower">Ouvrir une ruche</nuxt-link>
       </li>
       <!-- NAVGUARD -->
       <li class="nav__item">
@@ -29,7 +29,7 @@ export default {
   name: 'NavBar',
   data() {
     return {
-      route: '/login',
+      route: '/security/login',
       linkToDisplay: 'Se connecter'
     };
   },
@@ -41,9 +41,21 @@ export default {
   },
   methods: {
     accessGuard() {
-      if (this.isLogged && this.loggedUserState.roles[0] === 'ROLE_GROWER') {
-        this.route = '/growerProfile';
-        this.linkToDisplay = 'accéder à ma ruche';
+      if (this.isLogged) {
+        const userRole = this.loggedUserState.roles[0];
+        switch (userRole) {
+          case 'ROLE_GROWER':
+            this.route = '/accounts/growerProfile';
+            this.linkToDisplay = 'accéder à ma ruche';
+            break;
+          case 'ROLE_CONSUMER':
+            this.route = '/accounts/consumerProfile';
+            this.linkToDisplay = 'accéder à mon compte';
+            break;
+          default:
+            this.route = '/security/login';
+            this.linkToDisplay = 'Se connecter';
+        }
       }
     }
   }

@@ -26,7 +26,10 @@ test.before('Init Nuxt.js', async (t) => {
 // Exemple de test uniquement sur le HTML généré
 test('Route /growerProfile is redirected to /login if user not authenticated', async (t) => {
   const context = {};
-  const { redirected } = await nuxt.renderRoute('/growerProfile', context);
+  const { redirected } = await nuxt.renderRoute(
+    '/accounts/growerProfile',
+    context
+  );
 
   t.is(redirected.path, '/login');
 });
