@@ -1,13 +1,13 @@
 <template>
   <div class="container">
     <h1>Create Consumer</h1>
-    <Consumer-Form @submit-consumer="register" />
+    <consumer-form @submit-consumer="register" />
   </div>
 </template>
 <script>
 import registerConsumerForm from '../components/Forms/registerConsumerForm.vue';
 export default {
-  components: { 'Consumer-Form': registerConsumerForm },
+  components: { 'consumer-form': registerConsumerForm },
   methods: {
     async register(consumerDto) {
       try {

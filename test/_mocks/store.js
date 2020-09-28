@@ -34,3 +34,16 @@ export function StoreLoggedAsConsumerMock(getters, store) {
 
   return new Vuex.Store({ getters });
 }
+
+export function StoreLoggedAsDelivererMock(getters, store) {
+  getters = {
+    loggedUserState() {
+      return { roles: ['ROLE_DELIVERER'] };
+    },
+    isLogged() {
+      return true;
+    }
+  };
+
+  return new Vuex.Store({ getters });
+}

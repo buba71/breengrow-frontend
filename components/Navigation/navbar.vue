@@ -52,6 +52,10 @@ export default {
             this.route = '/accounts/consumerProfile';
             this.linkToDisplay = 'accéder à mon compte';
             break;
+          case 'ROLE_DELIVERER':
+            this.route = '/accounts/delivererProfile';
+            this.linkToDisplay = 'accéder à mon compte';
+            break;
           default:
             this.route = '/security/login';
             this.linkToDisplay = 'Se connecter';

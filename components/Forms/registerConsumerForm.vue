@@ -1,13 +1,13 @@
 <template>
   <form class="card" @submit.prevent="submit">
     <h2>Vous</h2>
-    <Form-Factory :fields="consumerForm" @input="updateConsumerData" />
+    <form-factory :fields="consumerForm" @input="updateConsumerData" />
     {{ consumerData }}
     <h2>Addresse(s)</h2>
     <button type="button" class="btn btn--info" @click="addAddress">
       Add an Address
     </button>
-    <Form-Factory
+    <form-factory
       v-if="hasAddresses"
       :fields="consumerAddressForm"
       @input="updateConsumerAddressData"
@@ -25,7 +25,7 @@ import {
 
 export default {
   name: 'RegisterConsumerForm',
-  components: { 'Form-Factory': FormFactory },
+  components: { 'form-factory': FormFactory },
 
   data: () => {
     return {
