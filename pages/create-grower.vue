@@ -1,14 +1,14 @@
 <template>
   <div class="container">
     <h1>Create Grower</h1>
-    <Grower-Form @submit-grower="register" />
+    <grower-form @submit-grower="register" />
   </div>
 </template>
 
 <script>
 import RegisterGrowerForm from '../components/Forms/registerGrowerForm.vue';
 export default {
-  components: { 'Grower-Form': RegisterGrowerForm },
+  components: { 'grower-form': RegisterGrowerForm },
   methods: {
     async register(growerDto) {
       try {

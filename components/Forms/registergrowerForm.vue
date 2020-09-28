@@ -1,9 +1,9 @@
 <template>
   <form class="card" @submit.prevent="submit">
     <h2>Votre société</h2>
-    <Form-Factory :fields="companyForm" @input="updateCompanyData" />
+    <form-factory :fields="companyForm" @input="updateCompanyData" />
     <h2>Vous</h2>
-    <Form-Factory :fields="growerForm" @input="updateGrowerData" />
+    <form-factory :fields="growerForm" @input="updateGrowerData" />
     <button type="submit" class="btn btn--primary">Valider</button>
   </form>
 </template>
@@ -17,7 +17,7 @@ import {
 
 export default {
   name: 'RegisterGrowerForm',
-  components: { 'Form-Factory': FormFactory },
+  components: { 'form-factory': FormFactory },
 
   data: () => {
     return {
