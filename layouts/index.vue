@@ -2,15 +2,9 @@
   <div>
     <header>
       <nav-bar></nav-bar>
-      <div class="img-header"></div>
-      <div class="card">
-        <div class="card__frame">
-          <div class="card__title">title</div>
-          <input type="search" /><button class="btn btn--secondary">
-            rechercher
-          </button>
-        </div>
-      </div>
+      <input type="search" /><button class="btn btn--secondary">
+        search
+      </button>
     </header>
     <nuxt />
   </div>
@@ -31,7 +25,8 @@ export default Vue.extend({
 <style lang="scss" scoped>
 @import '~/assets/css/main.scss';
 .card {
-  top: -15rem;
+  top: 15rem;
   background-color: $primary-color;
+  width: 50%;
 }
 </style>

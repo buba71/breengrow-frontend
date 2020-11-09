@@ -12,7 +12,10 @@ export function StoreNotLoggedMock(getters, store) {
 export function StoreLoggedAsGrowerMock(getters, store) {
   getters = {
     loggedUserState() {
-      return { roles: ['ROLE_GROWER'] };
+      return {
+        roles: ['ROLE_GROWER'],
+        parentId: 123456
+      };
     },
     isLogged() {
       return true;
