@@ -6,6 +6,6 @@ describe('Title', () => {
     const wrapper = shallowMount(Index);
     const title = wrapper.find('h1');
 
-    expect(title.text()).toBe('Breengrow');
+    expect(title.text()).toBe('Trouver une ruche près de chez vous');
   });
 });

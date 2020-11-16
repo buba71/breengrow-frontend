@@ -2,9 +2,6 @@
   <div>
     <header>
       <nav-bar></nav-bar>
-      <input type="search" /><button class="btn btn--secondary">
-        search
-      </button>
     </header>
     <nuxt />
   </div>
