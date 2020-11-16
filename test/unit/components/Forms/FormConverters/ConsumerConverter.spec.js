@@ -1,7 +1,7 @@
 import ConsumerConverter from './../../../../../components/Forms/FormConverters/ConsumerConverter.js';
 
 describe('Consumer data converter', () => {
-  it('Should convert data from form to a consumer Dto', () => {
+  it('Should convert data from consumer form to a consumer Dto', () => {
     const consumerData = {
       firstName: 'David',
       lastName: 'De Lima',

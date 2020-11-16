@@ -1,13 +1,13 @@
 /* eslint-disable no-labels */
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
-import Navbar from '../../../components/Navigation/navbar.vue';
+import Navbar from '../../../../components/Navigation/navbar.vue';
 import {
   StoreNotLoggedMock,
   StoreLoggedAsGrowerMock,
   StoreLoggedAsConsumerMock,
   StoreLoggedAsDelivererMock
-} from '../../_mocks/store.js';
+} from '../../../_mocks/store.js';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);
@@ -38,7 +38,7 @@ describe('Navigation guard', () => {
       localVue
     });
 
-    expect(wrapper.vm.route).toBe('/accounts/growerProfile');
+    expect(wrapper.vm.route).toBe('/accounts/growerProfile/123456');
     expect(wrapper.vm.linkToDisplay).toBe('accéder à ma ruche');
   });
 

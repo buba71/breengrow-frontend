@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import FormFactory from '../../../components/FormFactory/FormFactory.vue';
+import FormFactory from '../../../../components/FormFactory/FormFactory.vue';
 
 describe('Generate input ', () => {
   it('Sould have two inputs components', () => {
