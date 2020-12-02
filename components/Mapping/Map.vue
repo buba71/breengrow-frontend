@@ -1,6 +1,6 @@
 <template>
   <div id="map-wrap" style="height: 60vh; width: 100%">
-    <geo-search @submit="setLocation" />
+    <geo-search @submit-geocode="setLocation" />
     <no-ssr>
       <l-map ref="map" :zoom="zoom" :center="[lat, lng]">
         <l-tile-layer
@@ -13,7 +13,11 @@
           :color="'white'"
           :fill-color="'blue'"
         ></l-circle-marker>
-        <l-marker :lat-lng="[46.45, 4.12]"
+        <l-marker
+          v-for="(geoPoint, index) in geoPoints"
+          :key="index"
+          :lat-lng="[geoPoint.latitude, geoPoint.longitude]"
+          ><l-tooltip>{{ geoPoint.latitude }}</l-tooltip
           ><l-icon
             :icon-url="require('~/assets/images/pin.png')"
             :icon-size="[20, 25]"
@@ -25,9 +29,16 @@
 </template>
 <script>
 import GeoSearch from './GeoSearch.vue';
+import MetaDataExtractor from './Helpers/MetaDataExtractor.js';
 export default {
   name: 'MapSearch',
   components: { 'geo-search': GeoSearch },
+  props: {
+    geoPoints: {
+      type: Array,
+      default: () => [] // Empty array default value.
+    }
+  },
   data() {
     return {
       lat: 48.8534,
@@ -38,10 +49,11 @@ export default {
   },
   methods: {
     setLocation(result) {
+      const latLng = MetaDataExtractor.extractGeopoint(result);
       this.hasSearch = true;
       this.$el.scrollIntoView(true);
-      this.lng = result[0];
-      this.lat = result[1];
+      this.lng = latLng[0];
+      this.lat = latLng[1];
       this.$refs.map.setZoom(11);
       this.$refs.map.setCenter([this.lat, this.lng]);
     }

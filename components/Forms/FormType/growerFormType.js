@@ -2,20 +2,25 @@ import FormBuilder from '../../FormFactory/classes/FormBuilder.js';
 
 export function growerFormType() {
   const form = new FormBuilder();
-  form.addInput('text', 'firstName', ['two']);
-  form.addInput('text', 'lastName', ['two']);
-  form.addInput('email', 'email', ['one']);
-  form.addInput('password', 'password', ['one']);
-  form.addInput('password', 'repeat_password', ['one']);
+  form.addElement('Input', ['text', 'firstName', 'firstName', 'two']);
+  form.addElement('Input', ['text', 'lastName', 'lastName', 'two']);
+  form.addElement('Input', ['email', 'email', 'email', 'one']);
+  form.addElement('Input', ['password', 'password', 'password', 'one']);
+  form.addElement('Input', [
+    'password',
+    'repeat_password',
+    'repeat password',
+    'one'
+  ]);
   return form.getForm();
 }
 
-export function growerCompanyAdressType() {
+export function growerCompanyAddressFormType() {
   const form = new FormBuilder();
-  form.addInput('text', 'name', ['two']);
-  form.addInput('text', 'siret_number', ['two']);
-  form.addInput('text', 'street', ['one']);
-  form.addInput('text', 'city', ['two']);
-  form.addInput('text', 'zip_code', ['two']);
+  form.addElement('Input', ['text', 'name', 'name', 'two']);
+  form.addElement('Input', ['text', 'siret_number', 'siret number', 'two']);
+  form.addElement('Input', ['text', 'street', 'street', 'one']);
+  form.addElement('GeoSearch', ['city', 'submit-geocode', 'two']);
+  form.addElement('Input', ['text', 'zip_code', 'zip code', 'two']);
   return form.getForm();
 }

@@ -25,7 +25,6 @@ describe('Display register form', () => {
 
     // Call submit function on submit form.
     const response = await wrapper.vm.register(fakeFormData);
-    console.log(response);
 
     expect(response).toBe(fakeFormData);
     expect(mockAxios.$post).toHaveBeenCalledTimes(1);

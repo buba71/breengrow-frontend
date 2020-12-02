@@ -10,7 +10,6 @@ export default {
   components: { 'deliverer-form': RegisterDelivererForm },
   methods: {
     async register(delivererDto) {
-      console.log(delivererDto);
       try {
         const response = await this.$axios.$post(
           'api/deliverers',

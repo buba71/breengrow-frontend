@@ -1,3 +1,4 @@
+import Component from './Component.js';
 import Input from './Input.js';
 
 export default class FormBuilder {
@@ -13,28 +14,47 @@ export default class FormBuilder {
    * @param {*} name
    * @param {*} options
    */
-  addInput(type, name, options = []) {
-    const input = new Input();
-
-    FormBuilder.checkOptions(input, options);
-
-    input.setComponent('Input'); // Attention à la majuscule pour le nom du composant!!
-    input.setType(type);
-    input.setName(name);
-    input.setPlaceholder(name);
-    this.form.push(input);
+  addElement(element, options = []) {
+    if (element === 'Input') {
+      this.buildInput(element, options);
+    } else {
+      this.buildComponent(element, options);
+    }
+    // switch (element) {
+    //   case 'Input':
+    //     this.buildInput(element, options);
+    //     break;
+    //   case 'GeoSearch':
+    //     this.buildComponent(element, options);
+    //     break;
+    //   default:
+    //     console.log(`This element does not exist!!`);
+    // }
   }
 
-  /**
-   *
-   * @param {*} input
-   * @param {*} options
-   */
-  static checkOptions(input, options) {
+  buildComponent(element, options) {
+    const component = new Component();
+    component.setElement(element);
+    component.setLabel(options[0]);
+    component.setEvent(options[1]);
+    component.setClassName(options[2]);
+    this.form.push(component);
+  }
+
+  buildInput(element, options) {
     if (!Array.isArray(options))
       throw new TypeError(`parameter options is not an array ${options}`);
 
-    FormBuilder.setOptions(input, options);
+    const input = new Input();
+
+    input.setElement(element); // Attention à la majuscule pour le nom du composant!!
+    input.setType(options[0]);
+    input.setName(options[1]);
+    input.setLabel(options[1]);
+    input.setPlaceholder(options[2]);
+    input.setClassName(options[3]);
+
+    this.form.push(input);
   }
 
   /**
@@ -42,18 +62,5 @@ export default class FormBuilder {
    */
   getForm() {
     return this.form;
-  }
-
-  /**
-   *
-   * @param {*} input
-   * @param {*} options
-   * @returns new Input
-   * Add a css class attribut to input form.
-   */
-  static setOptions(input, options) {
-    input.setClassName(options[0]);
-
-    return input;
   }
 }

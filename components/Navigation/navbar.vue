@@ -42,7 +42,6 @@ export default {
   methods: {
     accessGuard() {
       if (this.isLogged) {
-        console.log(this.loggedUserState);
         const userRole = this.loggedUserState.roles[0];
         switch (userRole) {
           case 'ROLE_GROWER':

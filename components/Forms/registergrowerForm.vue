@@ -1,7 +1,11 @@
 <template>
   <form class="card" @submit.prevent="submit">
     <h2>Votre société</h2>
-    <form-factory :fields="companyForm" @input="updateCompanyData" />
+    <form-factory
+      :fields="companyForm"
+      @input="updateCompanyData"
+      @submit-geocode="setCityLocation"
+    />
     <h2>Vous</h2>
     <form-factory :fields="growerForm" @input="updateGrowerData" />
     <button type="submit" class="btn btn--primary">Valider</button>
@@ -12,7 +16,7 @@ import FormFactory from '../FormFactory/FormFactory.vue';
 import GrowerConverter from '../Forms/FormConverters/GrowerConverter.js';
 import {
   growerFormType,
-  growerCompanyAdressType
+  growerCompanyAddressFormType
 } from './FormType/growerFormType.js';
 
 export default {
@@ -24,7 +28,8 @@ export default {
       companyForm: [],
       growerForm: [],
       companyData: {},
-      growerData: {}
+      growerData: {},
+      cityMetaData: {}
     };
   },
 
@@ -32,7 +37,7 @@ export default {
    * Building grower form.
    */
   created() {
-    this.companyForm = growerCompanyAdressType();
+    this.companyForm = growerCompanyAddressFormType();
     this.growerForm = growerFormType();
   },
   methods: {
@@ -42,10 +47,14 @@ export default {
     updateGrowerData(payload) {
       this.growerData = payload;
     },
+    setCityLocation(result) {
+      this.cityMetaData = result;
+    },
     submit() {
       const growerDto = GrowerConverter.convertFormDataToDto(
         this.growerData,
-        this.companyData
+        this.companyData,
+        this.cityMetaData
       );
       this.$emit('submit-grower', growerDto);
     }

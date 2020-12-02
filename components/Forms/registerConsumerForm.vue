@@ -59,7 +59,6 @@ export default {
         this.consumerData,
         this.consumerAddressData
       );
-      console.log(consumerDto);
       this.$emit('submit-consumer', consumerDto);
     }
   }

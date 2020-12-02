@@ -1,8 +1,8 @@
 import GrowerConverter from './../../../../../components/Forms/FormConverters/GrowerConverter.js';
 
 describe('Consumer data converter', () => {
-  it('Should convert data from form to a consumer Dto', () => {
-    const growerData = {
+  it('Should convert data from form to a grower Dto', () => {
+    const growerDataInput = {
       firstName: 'David',
       lastName: 'De Lima',
       email: 'test@test.com',
@@ -10,17 +10,27 @@ describe('Consumer data converter', () => {
       repeat_password: 'test'
     };
 
-    const growerCompanyData = {
+    const growerCompanyDataInput = {
       company_name: 'Breengrow',
       siret_number: '849123456',
       street: 'Street test',
-      zipCode: '112345',
-      city: 'Paris'
+      zipCode: '112345'
+    };
+
+    const cityMetaDataFromApiInput = {
+      geometry: {
+        coordinates: [3, 48]
+      },
+      properties: {
+        city: 'test0',
+        context: '0, test'
+      }
     };
 
     const resultDto = GrowerConverter.convertFormDataToDto(
-      growerData,
-      growerCompanyData
+      growerDataInput,
+      growerCompanyDataInput,
+      cityMetaDataFromApiInput
     );
 
     const shouldDto = {
@@ -35,7 +45,8 @@ describe('Consumer data converter', () => {
         siret_number: '849123456',
         street: 'Street test',
         zipCode: '112345',
-        city: 'Paris'
+        city: 'test0',
+        geoPoint: [3, 48]
       }
     };
 

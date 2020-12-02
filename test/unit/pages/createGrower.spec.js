@@ -10,28 +10,38 @@ describe('Display register form', () => {
   });
 
   it('should send data grower to API on submit form', async () => {
-    const fakeFormData = {
-      firstname: 'David',
-      lastname: 'De Lima',
-      hive: {}
+    const growerDto = {
+      firstName: 'David',
+      lastName: 'De Lima',
+      email: 'test@test.com',
+      password: 'test',
+      repeat_password: 'test',
+      role: ['ROLE_GROWER'],
+      hive: {
+        company_name: 'Breengrow',
+        siret_number: '849123456',
+        street: 'Street test',
+        zipCode: '112345',
+        city: 'Paris',
+        geoPoint: [3, 48]
+      }
     };
 
     const mockAxios = {
-      $post: jest.fn(() => Promise.resolve(fakeFormData))
+      $post: jest.fn(() => Promise.resolve(growerDto))
     };
 
     const wrapper = mount(createGrower);
     wrapper.vm.$axios = mockAxios;
 
     // Call submit function on submit form.
-    const response = await wrapper.vm.register(fakeFormData);
-    console.log(response);
+    const response = await wrapper.vm.register(growerDto);
 
-    expect(response).toBe(fakeFormData);
+    expect(response).toBe(growerDto);
     expect(mockAxios.$post).toHaveBeenCalledTimes(1);
     expect(mockAxios.$post).toHaveBeenCalledWith(
       'api/grower/create',
-      fakeFormData
+      growerDto
     );
   });
 });
