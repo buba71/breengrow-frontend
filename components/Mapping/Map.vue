@@ -14,10 +14,19 @@
           :fill-color="'blue'"
         ></l-circle-marker>
         <l-marker
-          v-for="(geoPoint, index) in geoPoints"
+          v-for="(hiveData, index) in hivesData"
           :key="index"
-          :lat-lng="[geoPoint.latitude, geoPoint.longitude]"
-          ><l-tooltip>{{ geoPoint.latitude }}</l-tooltip
+          :lat-lng="[hiveData.geoPoint.latitude, hiveData.geoPoint.longitude]"
+          ><l-popup
+            ><div class="hive-content">
+              <p>{{ hiveData.company_name }}</p>
+              <p>{{ hiveData.street }}</p>
+              <p>{{ hiveData.zipCode }}</p>
+              <p>{{ hiveData.city }}</p>
+              <a href="" @click="products"
+                >Accéder aux produits de cette ruche</a
+              >
+            </div></l-popup
           ><l-icon
             :icon-url="require('~/assets/images/pin.png')"
             :icon-size="[20, 25]"
@@ -34,9 +43,9 @@ export default {
   name: 'MapSearch',
   components: { 'geo-search': GeoSearch },
   props: {
-    geoPoints: {
+    hivesData: {
       type: Array,
-      default: () => [] // Empty array default value.
+      default: () => []
     }
   },
   data() {
@@ -48,6 +57,9 @@ export default {
     };
   },
   methods: {
+    products() {
+      this.$router.push('create-grower');
+    },
     setLocation(result) {
       const latLng = MetaDataExtractor.extractGeopoint(result);
       this.hasSearch = true;
