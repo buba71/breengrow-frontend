@@ -1,5 +1,4 @@
 import { shallowMount } from '@vue/test-utils';
-
 import Map from '../../../../components/Mapping/Map.vue';
 
 describe('Displaying hives from map', () => {
