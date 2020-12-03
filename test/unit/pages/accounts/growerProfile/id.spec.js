@@ -25,7 +25,7 @@ describe('display profile', () => {
   const error = jest.fn();
 
   // Then  Allow testing component with asyncData hook.
-  let getComponentInitialized = async function() {
+  const getComponentInitialized = async function() {
     if (Grower.asyncData) {
       const originalData = Grower.data();
       const asyncData = await Grower.asyncData({

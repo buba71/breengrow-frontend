@@ -1,6 +1,6 @@
 export default class Input {
   #className; // css class
-  #component;
+  #element;
   #label;
   #type;
   #name;
@@ -19,8 +19,8 @@ export default class Input {
    *
    * @param {*} input
    */
-  setComponent(input) {
-    this.component = input;
+  setElement(input) {
+    this.element = input;
   }
 
   /**

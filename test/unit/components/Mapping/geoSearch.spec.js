@@ -2,12 +2,12 @@ import { shallowMount } from '@vue/test-utils';
 import Geosearch from '../../../../components/Mapping/GeoSearch.vue';
 
 describe('hive system searching', () => {
-  it('Should emit the submit event when user push "enter" key', () => {
+  it('Should emit the submit-geocode event when user push "enter" key', () => {
     const wrapper = shallowMount(Geosearch);
     const geoJson = [
       {
         geometry: {
-          coordinates: []
+          coordinates: [48, 25]
         },
         properties: {
           city: 'test0',
@@ -28,7 +28,8 @@ describe('hive system searching', () => {
     wrapper.setData({ results: geoJson, arrowCounter: 0 });
     wrapper.vm.onEnter();
 
-    expect(wrapper.emitted().submit).toBeTruthy();
+    expect(wrapper.emitted('submit-geocode')).toBeTruthy();
+    expect(wrapper.emitted('submit-geocode')[0]).toEqual([geoJson[0]]);
   });
 
   it('Should display message if a result not selected with keyboard arrows', () => {

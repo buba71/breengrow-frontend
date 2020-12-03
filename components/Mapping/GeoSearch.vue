@@ -4,6 +4,7 @@
     <input
       v-model="searchInput"
       type="text"
+      :placeholder="'choose a city on the list'"
       class="autocomplete"
       @input="onChange"
       @keydown.down="onArrowDown"
@@ -56,8 +57,9 @@ export default {
       }
     },
     setResult(result) {
+      this.searchInput = result.properties.city;
       this.flashMessage = '';
-      this.$emit('submit', result.geometry.coordinates);
+      this.$emit('submit-geocode', result);
       this.isOpen = false;
     },
     async onChange() {
@@ -75,7 +77,7 @@ export default {
 <style scoped>
 .autocomplete {
   position: relative;
-  width: 500px;
+  width: 100%;
 }
 
 .autocomplete-results {
@@ -87,7 +89,7 @@ export default {
 }
 
 .autocomplete-result {
-  width: 500px;
+  width: 100%;
   list-style: none;
   text-align: left;
   padding: 4px 2px;
