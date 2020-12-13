@@ -1,0 +1,33 @@
+@startuml order diagram class
+
+class Order 
+{
+  - int orderNumber
+  - consumerId;
+  - DateTime receivedAt
+  - string orderStatus
+  - float amount
+  - collection orderLines
+}
+
+class OrderLine 
+{
+  - int lineNumber/Id
+  - int productId
+  - int quantity
+  - float price
+}
+
+class Product
+{
+  - name
+  - description
+  - price
+}
+
+
+
+Order  *--  OrderLine : > owns
+OrderLine *-- Product : > owns
+
+@enduml

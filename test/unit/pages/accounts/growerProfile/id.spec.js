@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Grower from '../../../../../pages/accounts/growerProfile/_id.vue';
+import GrowerProfile from '../../../../../pages/accounts/growerProfile/_id.vue';
 
 describe('display profile', () => {
   // Mock asyncData arguments.
@@ -26,24 +26,64 @@ describe('display profile', () => {
 
   // Then  Allow testing component with asyncData hook.
   const getComponentInitialized = async function() {
-    if (Grower.asyncData) {
-      const originalData = Grower.data();
-      const asyncData = await Grower.asyncData({
+    if (GrowerProfile.asyncData) {
+      const originalData = GrowerProfile.data();
+      const asyncData = await GrowerProfile.asyncData({
         $axios,
         params,
         error
       });
-      Grower.data = function() {
+      GrowerProfile.data = function() {
         return { ...originalData, ...asyncData };
       };
     }
 
-    return mount(Grower);
+    return mount(GrowerProfile);
   };
   it('Should fetch grower data from Api', async () => {
-    let wrapper = await getComponentInitialized();
+    await getComponentInitialized();
 
     expect($axios.$get).toHaveBeenCalledTimes(1);
     expect($axios.$get).toHaveBeenCalledWith(`api/growers/12345`);
+  });
+
+  it('Should send new grower data to backend API', async () => {
+    const growerDto = {
+      firstName: 'David',
+      lastName: 'De Lima',
+      email: 'test@test.com',
+      password: 'test',
+      repeat_password: 'test',
+      role: ['ROLE_GROWER'],
+      hive: {
+        company_name: 'Breengrow',
+        siret_number: '849123456',
+        street: 'Street test',
+        zipCode: '112345',
+        city: 'Paris',
+        geoPoint: [3, 48]
+      }
+    };
+
+    const mockAxios = {
+      $put: jest.fn(() => Promise.resolve(growerDto))
+    };
+
+    const wrapper = mount(GrowerProfile, {
+      mocks: {
+        $route: {
+          params: {
+            id: 1
+          }
+        }
+      }
+    });
+    wrapper.vm.$axios = mockAxios;
+
+    const response = await wrapper.vm.register(growerDto);
+
+    expect(response).toEqual(growerDto);
+    expect(mockAxios.$put).toHaveBeenCalledTimes(1);
+    expect(mockAxios.$put).toHaveBeenCalledWith(`/api/growers/1`, growerDto);
   });
 });
