@@ -46,13 +46,13 @@ export default {
   async asyncData({ $axios, params, error }) {
     try {
       const response = await $axios.$get(`api/growers/${params.id}`);
-      console.log(response.grower);
       return {
         growerData: response.grower,
         hiveData: response.hive,
         productsData: response.products
       };
     } catch (err) {
+      console.log(err);
       error({ statusCode: 404 });
     }
   },
@@ -72,7 +72,7 @@ export default {
           growerDto
         );
         this.hasProductForm = false;
-        console.log(response);
+        return response;
       } catch (err) {
         console.log(err.response);
       }

@@ -23,8 +23,8 @@
               <p>{{ hiveData.street }}</p>
               <p>{{ hiveData.zipCode }}</p>
               <p>{{ hiveData.city }}</p>
-              <a href="" @click="products"
-                >Accéder aux produits de cette ruche</a
+              <nuxt-link :to="{ name: 'hives-id', params: { id: hiveData.id } }"
+                >Go to this hive</nuxt-link
               >
             </div></l-popup
           ><l-icon
@@ -57,15 +57,13 @@ export default {
     };
   },
   methods: {
-    products() {
-      this.$router.push('create-grower');
-    },
     setLocation(result) {
       const latLng = MetaDataExtractor.extractGeopoint(result);
       this.hasSearch = true;
       this.$el.scrollIntoView(true);
       this.lng = latLng[0];
       this.lat = latLng[1];
+      // zoom property component is not reactive with data properties...
       this.$refs.map.setZoom(11);
       this.$refs.map.setCenter([this.lat, this.lng]);
     }

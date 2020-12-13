@@ -1,6 +1,5 @@
 import { mount } from '@vue/test-utils';
 import FormFactory from '../../../../components/FormFactory/FormFactory.vue';
-import GeoSearch from '../../../../components/Mapping/GeoSearch.vue';
 
 describe('Generate input ', () => {
   it('Sould have two inputs components', () => {
@@ -46,7 +45,6 @@ describe('Generate input ', () => {
       }
     });
 
-    console.log(wrapper.html());
     const form = wrapper.findAll('input');
     expect(form.length).toBe(1);
   });
