@@ -51,7 +51,7 @@ describe('Navigation guard', () => {
       localVue
     });
 
-    expect(wrapper.vm.route).toBe('/accounts/consumerProfile');
+    expect(wrapper.vm.route).toBe('/accounts/consumerProfile/123456');
     expect(wrapper.vm.linkToDisplay).toBe('accéder à mon compte');
   });
 

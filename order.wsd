@@ -1,9 +1,26 @@
 @startuml order diagram class
 
+class Hive 
+{
+  - string name
+  - string siret_number
+  - array products
+  - string street_address
+  - string city 
+  - zip_code
+  - float lattitude
+  - float longitude
+}
+
+class consumer {
+  - string name
+}
+
 class Order 
 {
   - int orderNumber
-  - consumerId;
+  - uuid consumerId
+  - string hiveSiret
   - DateTime receivedAt
   - string orderStatus
   - float amount
@@ -13,6 +30,7 @@ class Order
 class OrderLine 
 {
   - int lineNumber/Id
+  - int orderId
   - int productId
   - int quantity
   - float price
@@ -20,6 +38,7 @@ class OrderLine
 
 class Product
 {
+  - uuid
   - name
   - description
   - price

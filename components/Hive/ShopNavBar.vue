@@ -2,11 +2,15 @@
   <div class="container-fluid">
     <nav class="hive-navbar">
       <div class="hive-info">{{ hiveInfo.name }}</div>
-      <div class="cart-inventory" @click="showCart = !showCart">
+      <div class="cart-summary" @click="showCart = !showCart">
         <div>Cart {{ itemsCounter }}</div>
       </div>
     </nav>
-    <shopping-cart v-show="showCart" class="shopping-cart"></shopping-cart>
+    <shopping-cart
+      v-show="showCart"
+      :siret="hiveInfo.siretNumber"
+      class="shopping-cart"
+    ></shopping-cart>
   </div>
 </template>
 
@@ -43,7 +47,7 @@ export default {
   color: white;
   padding: 10px;
 }
-.cart-inventory:hover {
+.cart-summary:hover {
   cursor: pointer;
 }
 

@@ -65,6 +65,7 @@ export default {
     async onChange() {
       if (this.searchInput) {
         this.isOpen = true;
+        this.$axios.setToken(false, ['get']);
         const { features } = await this.$axios.$get(
           `https://api-adresse.data.gouv.fr/search/?q=${this.searchInput}`
         );

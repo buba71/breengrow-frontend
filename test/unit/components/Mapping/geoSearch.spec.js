@@ -67,7 +67,8 @@ describe('hive system searching', () => {
     const wrapper = shallowMount(Geosearch);
 
     const mockAxios = {
-      $get: jest.fn(() => Promise.resolve({ features: {} }))
+      $get: jest.fn(() => Promise.resolve({ features: {} })),
+      setToken: jest.fn()
     };
     wrapper.vm.$axios = mockAxios;
 

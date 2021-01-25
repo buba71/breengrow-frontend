@@ -8,7 +8,6 @@ export default function({ store, req, route, redirect }) {
    *@ Redirect to '/login' if user not authenticated and have not authorizations.
    */
   if (!store.state.auth.loggedIn) return redirect('/security/login');
-
   const loggedInRole = JSON.parse(store.state.auth.user).roles.shift();
 
   if (authorizationRoles.shift() !== loggedInRole) {

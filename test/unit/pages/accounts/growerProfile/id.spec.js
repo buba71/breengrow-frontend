@@ -1,7 +1,7 @@
 import { mount } from '@vue/test-utils';
 import GrowerProfile from '../../../../../pages/accounts/growerProfile/_id.vue';
 
-describe('display profile', () => {
+describe('display grower profile', () => {
   // Mock asyncData arguments.
   const $axios = {
     $get: jest.fn(() =>

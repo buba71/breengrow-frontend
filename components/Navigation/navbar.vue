@@ -49,7 +49,7 @@ export default {
             this.linkToDisplay = 'accéder à ma ruche';
             break;
           case 'ROLE_CONSUMER':
-            this.route = '/accounts/consumerProfile';
+            this.route = `/accounts/consumerProfile/${this.loggedUserState.parentId}`;
             this.linkToDisplay = 'accéder à mon compte';
             break;
           case 'ROLE_DELIVERER':
