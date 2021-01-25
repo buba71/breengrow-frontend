@@ -3,6 +3,7 @@
     <div>
       <h2>Total: {{ total }}</h2>
     </div>
+    {{ products }}
     <table class="cart-content">
       <thead>
         <tr>
@@ -26,7 +27,7 @@
           <th></th>
           <th></th>
           <th></th>
-          <th><button>Valid this cart ></button></th>
+          <th><button @click="checkoutOrder">Valid this cart ></button></th>
         </tr>
       </tbody>
     </table>
@@ -37,6 +38,13 @@ import { mapGetters } from 'vuex';
 
 export default {
   name: 'ShoppingCart',
+  props: {
+    siret: {
+      type: String,
+      required: true,
+      default: ''
+    }
+  },
   data: () => {
     return {
       quantity: 1
@@ -45,8 +53,16 @@ export default {
   computed: {
     ...mapGetters({
       products: 'cart/cartProducts',
-      total: 'cart/totalCartPrice'
-    })
+      total: 'cart/totalCartPrice',
+      user: 'loggedUserState'
+    }),
+    orderData() {
+      return {
+        consumerId: this.user.parentId,
+        hive_siret: this.siret,
+        productsCart: this.products
+      };
+    }
   },
   methods: {
     incrementQuantity(product) {
@@ -54,6 +70,10 @@ export default {
     },
     decrementQuantity(product) {
       this.$store.dispatch('cart/removeProductFromCart', product);
+    },
+    checkoutOrder() {
+      this.$store.commit('order/SET_ORDER_LINES', this.orderData);
+      this.$router.push('/hives/order-checkout');
     }
   }
 };

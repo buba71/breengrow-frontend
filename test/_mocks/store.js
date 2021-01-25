@@ -28,7 +28,10 @@ export function StoreLoggedAsGrowerMock(getters, store) {
 export function StoreLoggedAsConsumerMock(getters, store) {
   getters = {
     loggedUserState() {
-      return { roles: ['ROLE_CONSUMER'] };
+      return {
+        roles: ['ROLE_CONSUMER'],
+        parentId: 123456
+      };
     },
     isLogged() {
       return true;

@@ -46,6 +46,7 @@ export default {
   async asyncData({ $axios, params, error }) {
     try {
       const response = await $axios.$get(`api/growers/${params.id}`);
+      console.log(response);
       return {
         growerData: response.grower,
         hiveData: response.hive,
