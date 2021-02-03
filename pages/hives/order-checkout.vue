@@ -52,6 +52,9 @@
 </template>
 <script>
 import { mapGetters } from 'vuex';
+/**
+ * Component usage.
+ */
 export default {
   name: 'OrderCheckout',
   middleware: 'authenticated',

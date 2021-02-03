@@ -1,9 +1,8 @@
 <template>
   <div class="shopping-cart">
     <div>
-      <h2>Total: {{ total }}</h2>
+      <h2 class="cartTotal-price">Total: {{ total }}</h2>
     </div>
-    {{ products }}
     <table class="cart-content">
       <thead>
         <tr>
@@ -14,9 +13,9 @@
       </thead>
       <tbody>
         <tr v-for="(product, index) in products" :key="index">
-          <th>{{ product.description }}</th>
-          <th>{{ product.price }}</th>
-          <th>{{ product.quantity }}</th>
+          <th class="item-description">{{ product.description }}</th>
+          <th class="item-price">{{ product.price }}</th>
+          <th class="item-quantity">{{ product.quantity }}</th>
           <th>
             <button @click="incrementQuantity(product)">+</button>
             <button @click="decrementQuantity(product)">-</button>
@@ -36,6 +35,9 @@
 <script>
 import { mapGetters } from 'vuex';
 
+/**
+ * Component usage.
+ */
 export default {
   name: 'ShoppingCart',
   props: {

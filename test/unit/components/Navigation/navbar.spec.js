@@ -7,7 +7,7 @@ import {
   StoreLoggedAsGrowerMock,
   StoreLoggedAsConsumerMock,
   StoreLoggedAsDelivererMock
-} from '../../../_mocks/store.js';
+} from '../../../_mocks/navBarStore.js';
 
 const localVue = createLocalVue();
 localVue.use(Vuex);

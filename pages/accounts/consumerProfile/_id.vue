@@ -34,6 +34,7 @@ export default {
   async asyncData({ $axios, params, error }) {
     try {
       const response = await $axios.$get(`api/consumers/${params.id}`);
+      console.log(response);
       return {
         consumerData: response.consumer
       };
@@ -42,19 +43,10 @@ export default {
       error({ statusCode: 404 });
     }
   },
+  data() {
+    return {};
+  },
   methods: {
-    async register(growerDto) {
-      try {
-        const response = await this.$axios.$put(
-          `/api/growers/${this.$route.params.id}`,
-          growerDto
-        );
-        this.hasProductForm = false;
-        return response;
-      } catch (err) {
-        console.log(err.response);
-      }
-    },
     logout() {
       this.$auth.logout();
     }
