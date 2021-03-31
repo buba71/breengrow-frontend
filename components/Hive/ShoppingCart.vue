@@ -74,6 +74,9 @@ export default {
       this.$store.dispatch('cart/removeProductFromCart', product);
     },
     checkoutOrder() {
+      if (!this.user) {
+        this.$router.push('/security/login');
+      }
       this.$store.commit('order/SET_ORDER_LINES', this.orderData);
       this.$router.push('/hives/order-checkout');
     }
