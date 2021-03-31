@@ -1,3 +1,4 @@
+// NavBar test store.
 import Vuex from 'vuex';
 
 export function StoreNotLoggedMock(getters, store) {

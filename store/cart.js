@@ -24,7 +24,7 @@ export const actions = {
   addProductToCart: (context, product) => {
     const cartItem = context.state.cart.find((item) => item.id === product.id);
 
-    if (!cartItem) {
+    if (typeof cartItem === 'undefined') {
       context.commit('ADD_PRODUCT_TO_CART', product);
     } else {
       context.commit('INCREASE_QUANTITY', cartItem);

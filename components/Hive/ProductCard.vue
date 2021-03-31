@@ -10,6 +10,10 @@
 </template>
 <script>
 import { mapActions } from 'vuex';
+
+/**
+ * Component usage.
+ */
 export default {
   name: 'ProductCard',
   props: {

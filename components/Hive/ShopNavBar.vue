@@ -18,6 +18,9 @@
 import { mapGetters } from 'vuex';
 import ShoppingCart from './ShoppingCart.vue';
 
+/**
+ * Component usage.
+ */
 export default {
   name: 'ShopNavBar',
   components: { 'shopping-cart': ShoppingCart },
