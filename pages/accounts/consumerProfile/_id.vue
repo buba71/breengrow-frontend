@@ -8,7 +8,23 @@
         Email: {{ consumerData.email }}
       </tab-content>
       <tab-content name="Manage orders" :selected="false">
-        No orders for moment.
+        <table>
+          <thead>
+            <tr>
+              <th>Orders</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>order number</td>
+            <td>date</td>
+            <td>download invoice</td>
+          </tr>
+          <tr v-for="order in ordersData" :key="order.number">
+            <td>{{ order.number }}</td>
+            <td>{{ order.registeredAt.date }}</td>
+            <td><button @click="download">download</button></td>
+          </tr>
+        </table>
       </tab-content>
     </tabs>
     <button class="btn btn--primary" @click="logout">Logout</button>
@@ -18,25 +34,30 @@
 <script>
 import Tabs from '../../../components/navigation/tabMenu/tabs';
 import Tab from '../../../components/navigation/tabMenu/tab';
+
 export default {
   components: {
     tabs: Tabs,
     'tab-content': Tab
   },
   validate({ params, query }) {
-    console.log(params);
+    // console.log(params);
     return true;
   },
   middleware: 'authenticated',
   meta: {
     auth: { role: 'ROLE_CONSUMER' }
   },
-  async asyncData({ $axios, params, error }) {
+  async asyncData({ $auth, $axios, params, error }) {
     try {
-      const response = await $axios.$get(`api/consumers/${params.id}`);
-      console.log(response);
+      const loggedInConsumerId = JSON.parse($auth.user).parentId;
+      const userData = await $axios.$get(`api/consumers/${params.id}`);
+      const ordersData = await $axios.$get(
+        `api/orders?consumerId=${loggedInConsumerId}`
+      );
       return {
-        consumerData: response.consumer
+        consumerData: userData.consumer,
+        ordersData: ordersData.orders
       };
     } catch (err) {
       console.log(err);
@@ -49,6 +70,19 @@ export default {
   methods: {
     logout() {
       this.$auth.logout();
+    },
+    async download() {
+      try {
+        const response = await this.$axios.$get(
+          `api/invoice/download/F20210323100`,
+          { responseType: 'blob' }
+        );
+        const file = new Blob([response], { type: 'application/pdf' });
+        const fileURL = URL.createObjectURL(file);
+        window.open(fileURL);
+      } catch (error) {
+        console.log(error.response);
+      }
     }
   }
 };
