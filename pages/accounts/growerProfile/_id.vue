@@ -20,7 +20,25 @@
         <product-form v-show="hasProductForm" @submit-product="register" />
         {{ productsData }}
       </tab-content>
-      <tab-content name="Manage orders" :selected="false"></tab-content>
+      <tab-content name="Manage orders" :selected="false">
+        <table>
+          <thead>
+            <tr>
+              <th>Orders recieved</th>
+            </tr>
+          </thead>
+          <tr>
+            <td>order number</td>
+            <td>date</td>
+            <td>Status</td>
+          </tr>
+          <tr v-for="order in ordersData" :key="order.number">
+            <td>{{ order.number }}</td>
+            <td>{{ order.registeredAt.date }}</td>
+            <td>{{ order.status }}</td>
+          </tr>
+        </table>
+      </tab-content>
     </tabs>
   </div>
 </template>
@@ -45,12 +63,15 @@ export default {
   },
   async asyncData({ $axios, params, error }) {
     try {
-      const response = await $axios.$get(`api/growers/${params.id}`);
-      console.log(response);
+      const userData = await $axios.$get(`api/growers/${params.id}`);
+      const ordersData = await $axios.$get(
+        `api/orders?hiveSiret=${userData.hive.siretNumber}`
+      );
       return {
-        growerData: response.grower,
-        hiveData: response.hive,
-        productsData: response.products
+        growerData: userData.grower,
+        hiveData: userData.hive,
+        productsData: userData.products,
+        ordersData: ordersData.orders
       };
     } catch (err) {
       console.log(err);

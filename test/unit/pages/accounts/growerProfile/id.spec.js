@@ -43,8 +43,9 @@ describe('display grower profile', () => {
   it('Should fetch grower data from Api', async () => {
     await getComponentInitialized();
 
-    expect($axios.$get).toHaveBeenCalledTimes(1);
+    expect($axios.$get).toHaveBeenCalledTimes(2);
     expect($axios.$get).toHaveBeenCalledWith(`api/growers/12345`);
+    expect($axios.$get).toHaveBeenCalledWith(`api/orders?hiveSiret=849152123`);
   });
 
   it('Should send new grower data to backend API', async () => {

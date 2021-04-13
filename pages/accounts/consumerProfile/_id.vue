@@ -22,7 +22,9 @@
           <tr v-for="order in ordersData" :key="order.number">
             <td>{{ order.number }}</td>
             <td>{{ order.registeredAt.date }}</td>
-            <td><button @click="download">download</button></td>
+            <td>
+              <button @click="download(order.invoiceFile)">download</button>
+            </td>
           </tr>
         </table>
       </tab-content>
@@ -71,10 +73,10 @@ export default {
     logout() {
       this.$auth.logout();
     },
-    async download() {
+    async download(invoiceFileName) {
       try {
         const response = await this.$axios.$get(
-          `api/invoice/download/F20210323100`,
+          `api/invoice/download/${invoiceFileName}`,
           { responseType: 'blob' }
         );
         const file = new Blob([response], { type: 'application/pdf' });
