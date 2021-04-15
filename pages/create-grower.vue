@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1>Create Grower</h1>
+    <h1>Create your hive</h1>
     <grower-form @submit-grower="register" />
   </div>
 </template>

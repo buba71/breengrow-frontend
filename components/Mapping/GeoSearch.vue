@@ -1,27 +1,29 @@
 <template>
   <div>
-    <div class="flash-message">{{ flashMessage }}</div>
-    <input
-      v-model="searchInput"
-      type="text"
-      :placeholder="'choose a city on the list'"
-      class="autocomplete"
-      @input="onChange"
-      @keydown.down="onArrowDown"
-      @keydown.up="onArrowUp"
-      @keydown.enter="onEnter"
-    />
-    <ul v-show="isOpen" class="autocomplete-results">
-      <li
-        v-for="(result, index) in results"
-        :key="index"
-        class="autocomplete-result"
-        :class="{ 'is-active': index === arrowCounter }"
-        @click="setResult(result)"
-      >
-        {{ result.properties.city }}, {{ result.properties.context }}
-      </li>
-    </ul>
+    <form class="search-form">
+      <div class="flash-message">{{ flashMessage }}</div>
+      <input
+        v-model="searchInput"
+        type="text"
+        :placeholder="'where do you live ?'"
+        class="autocomplete map-search"
+        @input="onChange"
+        @keydown.down="onArrowDown"
+        @keydown.up="onArrowUp"
+        @keydown.enter="onEnter"
+      />
+      <ul v-show="isOpen" class="autocomplete-results">
+        <li
+          v-for="(result, index) in results"
+          :key="index"
+          class="autocomplete-result"
+          :class="{ 'is-active': index === arrowCounter }"
+          @click="setResult(result)"
+        >
+          {{ result.properties.city }}, {{ result.properties.context }}
+        </li>
+      </ul>
+    </form>
   </div>
 </template>
 <script>
@@ -101,5 +103,9 @@ export default {
 .autocomplete-result:hover {
   background-color: #4aae9b;
   color: white;
+}
+.search-form {
+  position: relative;
+  top: -100px;
 }
 </style>

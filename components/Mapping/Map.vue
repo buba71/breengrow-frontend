@@ -1,39 +1,54 @@
 <template>
-  <div id="map-wrap" style="height: 60vh; width: 100%">
-    <geo-search @submit-geocode="setLocation" />
-    <no-ssr>
-      <l-map ref="map" :zoom="zoom" :center="[lat, lng]">
-        <l-tile-layer
-          url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
-        ></l-tile-layer>
-        <l-circle-marker
-          v-if="hasSearch"
-          :lat-lng="[lat, lng]"
-          :radius="10"
-          :color="'white'"
-          :fill-color="'blue'"
-        ></l-circle-marker>
-        <l-marker
-          v-for="(hiveData, index) in hivesData"
-          :key="index"
-          :lat-lng="[hiveData.geoPoint.latitude, hiveData.geoPoint.longitude]"
-          ><l-popup
-            ><div class="hive-content">
-              <p>{{ hiveData.company_name }}</p>
-              <p>{{ hiveData.street }}</p>
-              <p>{{ hiveData.zipCode }}</p>
-              <p>{{ hiveData.city }}</p>
-              <nuxt-link :to="{ name: 'hives-id', params: { id: hiveData.id } }"
-                >Go to this hive</nuxt-link
-              >
-            </div></l-popup
-          ><l-icon
-            :icon-url="require('~/assets/images/pin.png')"
-            :icon-size="[20, 25]"
-          ></l-icon
-        ></l-marker>
-      </l-map>
-    </no-ssr>
+  <div>
+    <div class="search-content">
+      <div class="home-picture">
+        <div></div>
+        <div>
+          <img src="~assets/images/home.jpg" />
+          <geo-search @submit-geocode="setLocation" />
+        </div>
+        <div></div>
+      </div>
+      <div id="map-wrap" style="height: 60vh; width: 100%">
+        <no-ssr>
+          <l-map ref="map" :zoom="zoom" :center="[lat, lng]">
+            <l-tile-layer
+              url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+            ></l-tile-layer>
+            <l-circle-marker
+              v-if="hasSearch"
+              :lat-lng="[lat, lng]"
+              :radius="10"
+              :color="'white'"
+              :fill-color="'blue'"
+            ></l-circle-marker>
+            <l-marker
+              v-for="(hiveData, index) in hivesData"
+              :key="index"
+              :lat-lng="[
+                hiveData.geoPoint.latitude,
+                hiveData.geoPoint.longitude
+              ]"
+              ><l-popup
+                ><div class="hive-content">
+                  <p>{{ hiveData.company_name }}</p>
+                  <p>{{ hiveData.street }}</p>
+                  <p>{{ hiveData.zipCode }}</p>
+                  <p>{{ hiveData.city }}</p>
+                  <nuxt-link
+                    :to="{ name: 'hives-id', params: { id: hiveData.id } }"
+                    >Go to this hive</nuxt-link
+                  >
+                </div></l-popup
+              ><l-icon
+                :icon-url="require('~/assets/images/pin.png')"
+                :icon-size="[20, 25]"
+              ></l-icon
+            ></l-marker>
+          </l-map>
+        </no-ssr>
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -70,3 +85,9 @@ export default {
   }
 };
 </script>
+<style lang="scss" scoped>
+.home-picture {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+}
+</style>
