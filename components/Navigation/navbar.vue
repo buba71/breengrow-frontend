@@ -7,11 +7,7 @@
     {{ isLogged }}
     <ul class="nav__links">
       <li class="nav__item">
-        <nuxt-link to="/create-grower"
-          ><button class="build-hive btn btn--secondary">
-            Ouvrir une ruche
-          </button></nuxt-link
-        >
+        <nuxt-link to="/create-grower">Ouvrir une ruche</nuxt-link>
       </li>
       <!-- NAVGUARD -->
       <li class="nav__item">
@@ -34,7 +30,7 @@ export default {
   data() {
     return {
       route: '/security/login',
-      linkToDisplay: 'se connecter'
+      linkToDisplay: 'Se connecter'
     };
   },
   computed: {
@@ -62,15 +58,10 @@ export default {
             break;
           default:
             this.route = '/security/login';
-            this.linkToDisplay = 'se connecter';
+            this.linkToDisplay = 'Se connecter';
         }
       }
     }
   }
 };
 </script>
-<style lang="scss" scoped>
-.build-hive {
-  width: 150px;
-}
-</style>

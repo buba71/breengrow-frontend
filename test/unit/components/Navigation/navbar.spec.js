@@ -26,7 +26,7 @@ describe('Navigation guard', () => {
     });
 
     expect(wrapper.vm.route).toBe('/security/login');
-    expect(wrapper.vm.linkToDisplay).toBe('se connecter');
+    expect(wrapper.vm.linkToDisplay).toBe('Se connecter');
   });
 
   it(`Shoult display 'accéder à ma ruche' if user is logged and role= ROLE_GROWER and set route link to'/accounts/growerProfile`, () => {
