@@ -4,7 +4,7 @@
     <input
       v-model="searchInput"
       type="text"
-      :placeholder="'choose a city on the list'"
+      :placeholder="'where do you live'"
       class="autocomplete"
       @input="onChange"
       @keydown.down="onArrowDown"
@@ -53,7 +53,7 @@ export default {
         this.setResult(this.results[this.arrowCounter]);
         this.arrowCounter = -1;
       } else {
-        this.flashMessage = `Veuillez saisir et sélectionner une ville valide.`;
+        this.flashMessage = `Veuillez saisir, puis sélectionner une ville valide.`;
       }
     },
     setResult(result) {
@@ -77,8 +77,8 @@ export default {
 </script>
 <style scoped>
 .autocomplete {
-  position: relative;
   width: 100%;
+  margin: auto;
 }
 
 .autocomplete-results {
@@ -95,6 +95,7 @@ export default {
   text-align: left;
   padding: 4px 2px;
   cursor: pointer;
+  background-color: #fff;
 }
 
 .autocomplete-result.is-active,

@@ -14,6 +14,6 @@ describe('Title', () => {
 
     const title = wrapper.find('h1');
 
-    expect(title.text()).toBe('Trouver une ruche près de chez vous');
+    expect(title.text()).toBe('FIND A HIVE NEAR FROM YOUR HOME');
   });
 });

@@ -36,7 +36,7 @@ describe('Displaying hives from map', () => {
       }
     };
 
-    wrapper.vm.setLocation(apiResponse);
+    wrapper.vm.$emit('submit-geocode', apiResponse);
 
     expect(wrapper.vm.lat).toBe(10);
     expect(wrapper.vm.lng).toBe(48);
