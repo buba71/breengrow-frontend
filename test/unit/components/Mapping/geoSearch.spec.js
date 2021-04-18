@@ -59,7 +59,7 @@ describe('hive system searching', () => {
     wrapper.vm.onEnter();
 
     expect(wrapper.vm.flashMessage).toEqual(
-      'Veuillez saisir et sélectionner une ville valide.'
+      'Veuillez saisir, puis sélectionner une ville valide.'
     );
   });
 

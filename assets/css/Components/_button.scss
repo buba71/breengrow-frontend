@@ -4,6 +4,10 @@
     color: #fff;
     border: transparent;
     border-radius: 5px 5px 5px 5px;
+    &__outline {        
+        background-color: #fff;
+        @include btn-outline($colors);
+    }    
     @include btn-colors($colors);
     &:hover {
         cursor: pointer;

@@ -3,10 +3,10 @@ input {
     height: 2rem;
     padding-left: 2rem;
     margin-bottom: 1rem;
-    background-color: rgb(226, 226, 226);
+    background-color: rgb(253, 241, 241);
     box-sizing: border-box; 
     outline: none;   
-    border: 1px solid gray;
+    border: 1px solid $secondary-color;
     border-radius: 5px 5px 5px 5px;
     transition: background-color .2s linear;
     &:focus{
