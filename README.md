@@ -1,24 +1,16 @@
 # breengrow-frontend
 
-> Fontend part of breengrow application
+## Fontend part of breengrow application
 
-## Build Setup
+### 1. connect to application in local environment
 
-`code`
+````bash
+http://127.0.0.1:3000/
 
-``` bash
-# install dependencies
-$ npm install
+not
 
-# serve with hot reload at localhost:3000
-$ npm run dev
+http://localhost:3000/
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+`````
 
-# generate static project
-$ npm run generate
-```
-
-For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
+Avoiding CORS with backend API rest.
